@@ -1,9 +1,8 @@
 package com.larajosed.pelicula.rest;
 
-import java.sql.Date;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.larajosed.pelicula.model.Pelicula;
 import com.larajosed.pelicula.service.PeliculaService;
 
+import com.larajosed.usuario.service.UsuarioService;
+
 
 
 @RestController
@@ -21,16 +22,19 @@ import com.larajosed.pelicula.service.PeliculaService;
 public class PeliculasController {
 	@Autowired
 	PeliculaService peliculaService;
+	UsuarioService usuarioService;
 
 	@GetMapping("/{id}")
-	public Pelicula idPeli(@PathVariable Integer id){
+	public Optional<Pelicula> idPeli(@PathVariable Integer id){
 		return peliculaService.getById(id);
 	}
-
+		
 	@PostMapping
 	public Pelicula addPelicula(@RequestBody Pelicula pelicula) {
 		return  peliculaService.savePelicula(pelicula);
 	}
+	
+	
 	
 
 	

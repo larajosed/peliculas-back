@@ -1,6 +1,7 @@
 package com.larajosed.pelicula.service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,18 +14,18 @@ public class PeliculaService {
 	@Autowired
 	PeliculaRepository peliculaRepository;
 	
-	public Pelicula getById(int id){
-		return peliculaRepository.getById(id);
+	public Optional<Pelicula> getById(int id){
+		return peliculaRepository.findById(id);
 	}
 	
-	public Pelicula savePelicula(Pelicula pelicula) {
-		
-		Integer id = pelicula.id;
-		if(pelicula.id != id) {
-			pelicula.setFecha(LocalDateTime.now());
+	public Pelicula savePelicula(Pelicula pelicula) {		
+		Integer id = pelicula.getId();
+		if(id == null) {
+			pelicula.setFechaCreacion(LocalDateTime.now());
 		}else {
-			pelicula.getFecha();
-			pelicula.setFecha_ultima_modificacion(LocalDateTime.now());
+			Pelicula peliculaDB = peliculaRepository.findById(pelicula.getId()).get();	
+			pelicula.setFechaCreacion(peliculaDB.getFechaCreacion());
+			pelicula.setFechaUltimaModificacion(LocalDateTime.now()); 			
 		}		
 		return peliculaRepository.save(pelicula);
 	}

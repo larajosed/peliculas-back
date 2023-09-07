@@ -19,18 +19,18 @@ import jakarta.persistence.TemporalType;
 public class Pelicula {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer id;
+	private Integer id;
 
 	@Column
 	private String nombre;
 	
 	@Column
 	@Temporal(TemporalType.TIMESTAMP)
-	private LocalDateTime fecha;
+	private LocalDateTime fechaCreacion;
 	
 	@Column
 	@Temporal(TemporalType.TIMESTAMP)
-	private LocalDateTime fecha_ultima_modificacion;
+	private LocalDateTime fechaUltimaModificacion;
 	
 	public Integer getId() {
 		return id;
@@ -48,20 +48,20 @@ public class Pelicula {
 		this.nombre = nombre;
 	}
 	
-	public LocalDateTime getFecha() {
-		return fecha;
+	public LocalDateTime getFechaCreacion() {
+		return fechaCreacion;
 	}
 
-	public void setFecha(LocalDateTime localDateTime) {
-		this.fecha = localDateTime;
+	public void setFechaCreacion(LocalDateTime localDateTime) {
+		this.fechaCreacion = localDateTime;
 	}
 	
-	public LocalDateTime getFecha_ultima_modificacion() {
-		return fecha_ultima_modificacion;
+	public LocalDateTime getFechaUltimaModificacion() {
+		return fechaUltimaModificacion;
 	}
 
-	public void setFecha_ultima_modificacion(LocalDateTime fecha_ultima_modificacion) {
-		this.fecha_ultima_modificacion = fecha_ultima_modificacion;
+	public void setFechaUltimaModificacion(LocalDateTime fechaUltimaModificacion) {
+		this.fechaUltimaModificacion = fechaUltimaModificacion;
 	}
 }
 
