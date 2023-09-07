@@ -1,13 +1,37 @@
 package com.larajosed.pelicula.rest;
 
+import java.sql.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-public class Service {
+import com.larajosed.pelicula.model.Pelicula;
+import com.larajosed.pelicula.service.PeliculaService;
 
-	@GetMapping("/id")
-	public String idPeli(){
-		return "hola";
+
+
+@RestController
+@RequestMapping("/pelicula")
+public class PeliculasController {
+	@Autowired
+	PeliculaService peliculaService;
+
+	@GetMapping("/{id}")
+	public Pelicula idPeli(@PathVariable Integer id){
+		return peliculaService.getById(id);
 	}
+
+	@PostMapping
+	public Pelicula addPelicula(@RequestBody Pelicula pelicula) {
+		return  peliculaService.savePelicula(pelicula);
+	}
+	
+
+	
 }
