@@ -9,11 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.larajosed.pelicula.model.Pelicula;
 import com.larajosed.pelicula.service.PeliculaService;
-
-import com.larajosed.usuario.service.UsuarioService;
 
 
 
@@ -22,7 +19,7 @@ import com.larajosed.usuario.service.UsuarioService;
 public class PeliculasController {
 	@Autowired
 	PeliculaService peliculaService;
-	UsuarioService usuarioService;
+
 
 	@GetMapping("/{id}")
 	public Optional<Pelicula> idPeli(@PathVariable Integer id){
