@@ -13,10 +13,10 @@ public class UsuarioService {
 	
 	public Usuario findByEmail(String email, String contrasena){
 		
-		 Usuario usuario = usuarioRepository.findByEmail(email).get();
-		 if(contrasena.equals(usuario.getContrasena())) {
+		 Usuario usuario = usuarioRepository.findByEmail(email).orElse(null);
+		 if(usuario != null && contrasena.equals(usuario.getContrasena())) {
 			 return usuario;
-		 }else {
+		 } else {
 			 return null;
 		 }
 	}

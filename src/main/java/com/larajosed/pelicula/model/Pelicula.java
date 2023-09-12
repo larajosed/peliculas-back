@@ -32,6 +32,18 @@ public class Pelicula {
 	@Temporal(TemporalType.TIMESTAMP)
 	private LocalDateTime fechaUltimaModificacion;
 	
+	@Column
+	private String descripcion;
+	
+	@Column
+	private String puntuacion;
+	
+	@Column
+	private String imagen;
+	
+	@Column
+	private Integer usuarioId;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -63,5 +75,39 @@ public class Pelicula {
 	public void setFechaUltimaModificacion(LocalDateTime fechaUltimaModificacion) {
 		this.fechaUltimaModificacion = fechaUltimaModificacion;
 	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public String getPuntuacion() {
+		return puntuacion;
+	}
+
+	public void setPuntuacion(String puntuacion) {
+		this.puntuacion = puntuacion;
+	}
+
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+
+	public Integer getUsuarioId() {
+		return usuarioId;
+	}
+
+	public void setUsuarioId(Integer usuarioId) {
+		this.usuarioId = usuarioId;
+	}
+	
+	
 }
 

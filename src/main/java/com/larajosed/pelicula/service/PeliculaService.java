@@ -1,6 +1,7 @@
 package com.larajosed.pelicula.service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +29,9 @@ public class PeliculaService {
 			pelicula.setFechaUltimaModificacion(LocalDateTime.now()); 			
 		}		
 		return peliculaRepository.save(pelicula);
+	}
+	
+	public List<Pelicula> getAllPeliculas() {
+		return peliculaRepository.findAll();
 	}
 }

@@ -1,5 +1,6 @@
 package com.larajosed.pelicula.rest;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,11 @@ public class PeliculasController {
 	@GetMapping("/{id}")
 	public Optional<Pelicula> idPeli(@PathVariable Integer id){
 		return peliculaService.getById(id);
+	}
+	
+	@GetMapping("lista")
+	public List<Pelicula> allPeliculas() {
+		return peliculaService.getAllPeliculas();
 	}
 		
 	@PostMapping
