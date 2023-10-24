@@ -3,6 +3,8 @@ package com.larajosed.pelicula.model;
 import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.larajosed.pelicula.view.Views;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,9 +21,11 @@ import jakarta.persistence.TemporalType;
 public class Pelicula {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.DataFilm.class)
 	private Integer id;
 
 	@Column
+	@JsonView(Views.DataFilm.class)
 	private String nombre;
 	
 	@Column
@@ -35,14 +39,19 @@ public class Pelicula {
 	@Column
 	private String descripcion;
 	
+	@JsonView(Views.DataFilm.class)
 	@Column
 	private String puntuacion;
 	
+	@JsonView(Views.DataFilm.class)
 	@Column
 	private String imagen;
 	
 	@Column
 	private Integer usuarioId;
+	
+	@Column
+	private String categoria;
 	
 	public Integer getId() {
 		return id;
@@ -106,6 +115,14 @@ public class Pelicula {
 
 	public void setUsuarioId(Integer usuarioId) {
 		this.usuarioId = usuarioId;
+	}
+	
+	public String getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
 	}
 	
 	
